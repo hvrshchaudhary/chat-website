@@ -11,6 +11,8 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Allow CORS for all endpoints
                 .allowedOrigins("http://localhost:3000") // Allow requests from your React app's origin
-                .allowedMethods("*"); // Allow all HTTP methods (GET, POST, PUT, etc.)
+                .allowedHeaders("*")
+                .allowedMethods("*");
+//                .allowedCredentials(true);
     }
 }

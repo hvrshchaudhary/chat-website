@@ -51,6 +51,7 @@ public class UserController {
                 .map(user -> new UserDTO(user.getUsername()))
                 .collect(Collectors.toList());
         return ResponseEntity.ok(userDTOs);
-    }
 
+
+    }
 }
