@@ -1,0 +1,23 @@
+.user-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.user {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+.user:hover {
+    background-color: #f0f0f0;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.inactive {
+    color: #999;
+}
