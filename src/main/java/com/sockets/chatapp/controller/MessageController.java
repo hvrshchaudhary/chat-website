@@ -37,5 +37,4 @@ public class MessageController {
 
     // Additional endpoints can be implemented for deleting, updating messages, etc.
 
-    // Note: Implement other optional functionalities as needed by your application.
 }

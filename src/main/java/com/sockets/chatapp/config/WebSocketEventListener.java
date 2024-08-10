@@ -21,20 +21,28 @@ public class WebSocketEventListener {
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectEvent event) {
         SimpMessageHeaderAccessor headers = SimpMessageHeaderAccessor.wrap(event.getMessage());
-        String username = headers.getUser().getName();
-        logger.info("Received a new web socket connection from username: {}", username);
+        if (headers.getUser() != null) {
+            String username = headers.getUser().getName();
+            logger.info("Received a new web socket connection from username: {}", username);
 
-        // Mark user as online
-        userService.markUserOnline(username);
+            // Mark user as online
+            userService.markUserOnline(username);
+        } else {
+            logger.warn("WebSocket connection without user information.");
+        }
     }
 
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
         SimpMessageHeaderAccessor headers = SimpMessageHeaderAccessor.wrap(event.getMessage());
-        String username = headers.getUser().getName();
-        logger.info("User Disconnected : " + username);
+        if (headers.getUser() != null) {
+            String username = headers.getUser().getName();
+            logger.info("User Disconnected : " + username);
 
-        // Mark user as offline
-        userService.markUserOffline(username);
+            // Mark user as offline
+            userService.markUserOffline(username);
+        } else {
+            logger.warn("WebSocket disconnection without user information.");
+        }
     }
 }

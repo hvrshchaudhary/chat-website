@@ -9,6 +9,10 @@ public class MessageDTO {
     private String content;
     private LocalDateTime timestamp;
 
+    // No-argument constructor
+    public MessageDTO() {
+    }
+
     // Constructor
     public MessageDTO(String senderUsername, String receiverUsername, String content, LocalDateTime timestamp) {
         this.senderUsername = senderUsername;
@@ -48,5 +52,15 @@ public class MessageDTO {
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    @Override
+    public String toString() {
+        return "MessageDTO{" +
+                "senderUsername='" + senderUsername + '\'' +
+                ", receiverUsername='" + receiverUsername + '\'' +
+                ", content='" + content + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
     }
 }

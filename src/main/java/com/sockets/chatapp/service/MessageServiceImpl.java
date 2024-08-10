@@ -21,10 +21,15 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Message sendMessage(Message message) {
-        // Set the current time as the timestamp
+        // Log the message content to verify fields
+        System.out.println("Saving Message: " + message);
+        if (message.getSender() == null || message.getReceiver() == null) {
+            throw new IllegalArgumentException("Sender and receiver must not be null");
+        }
         message.setTimestamp(LocalDateTime.now());
         return messageRepository.save(message);
     }
+
 
     @Override
     public List<Message> getConversation(String senderId, String receiverId) {
